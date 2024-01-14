@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import MatchProcessor
 
 app = Flask(__name__)
-matchProcessor = MatchProcessor.MatchProcessor("futbol_martes")
+matchProcessor = MatchProcessor.MatchProcessor("data/futbol_martes.csv")
 
 
 @app.route("/")

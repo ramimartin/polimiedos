@@ -7,9 +7,9 @@ class MatchProcessor:
     def __init__(self, file):
         self.players = {}
         self.matches = []
-        self.__get_results(file)
+        self.__processCSV(file)
 
-    def __get_results(self, file):
+    def __processCSV(self, file):
         with open(file) as csv_f:
             r = csv.reader(csv_f)
             for row in r:

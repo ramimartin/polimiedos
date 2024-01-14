@@ -22,12 +22,12 @@
                     </thead>
                     <tbody>
                     {% for player in players %}
-                    <tr class = "{% if loop.first %} punt
+                    <tr class = "{% if player.points() == players[0].points() %} punt
                      {% elif loop.index % 2 == 0  %} pr
                      {% else %} ipr
 
                      {% endif %}">
-                        <td {% if loop.last %} class="ds1" {% endif %}>{{loop.index }}</td>
+                        <td {% if player.points() == players[loop.length-1].points() %} class="ds1" {% endif %}>{{loop.index }}</td>
                         <td align="left"><img src="static/ar.png">{{player.name}}</td>
                         <td>{{player.points()}}</td>
                         <td>{{player.total_matches()}}</td>
