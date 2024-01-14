@@ -1,0 +1,118 @@
+.eqs2 {
+    float: left;
+    width: 390px;
+    margin-left:10px;
+    margin-top: 10px;
+    text-align: center;
+    background: #00612d;
+    color: #fff;
+    font-weight: 700;
+}
+.eqs {
+    margin-left:0; 
+background: none;   
+}
+#py2cont {
+    border: 1px solid black;
+    width:138px;
+    height:90px;
+    font-family: Roboto,sans-serif,Arial,Helvetica;
+    font-weight:bold;
+    background:#1c7852;
+    color:white;
+    font-size:13px;
+    text-align:center;
+   position:relative;
+    
+}
+
+#py2esc1 img, #py2esc2 img {
+    width:50px;
+}
+
+#py2esc1 {
+    width:49%;
+    float:left;
+    text-overflow: clip;
+overflow: hidden;
+    white-space: nowrap;
+  font-size:11px
+}
+#py2esc2 {
+    width:49%;
+    float:right;
+    text-overflow: clip;
+overflow: hidden;
+    white-space: nowrap;
+  font-size:11px
+}
+
+#py2res {
+
+}
+
+#py2ida img, #py2ida0 img, #py2ida1 img, #py2vue img, #py2vue0 img, #py2vue1 img {
+  width:12px
+}
+
+#py2ida, #py2ida0, #py2ida1 {
+        float:left;
+    background:black; 
+    font-size:14px;
+    width:40%;
+    text-overflow: clip;
+overflow: hidden;
+    white-space: nowrap;
+}
+#py2vue, #py2vue0, #py2vue1 {
+        float:right;
+    background:black; 
+    font-size:14px;
+    width:40%;
+    text-overflow: clip;
+overflow: hidden;
+    white-space: nowrap;
+}
+
+#py2ida0, #py2vue0 {
+    background:#e9e9e9;
+    color:black;   
+}
+#py2ida1, #py2vue1 {
+    background:red;
+    color:white;   
+}
+
+.py2pen {
+color:#1fe6ff;
+font-size:12px
+}
+
+#py2nom {
+    text-shadow:1px 1px 1px black;
+    text-overflow: clip;
+overflow: hidden;
+    white-space: nowrap;
+}
+
+
+#py2restotal, #py2restotal0, #py2restotal1 {
+    margin:auto;
+     width:40%; 
+    background:black;   
+    font-size:14px;
+}
+
+#py2restotal0 {
+    background:#e9e9e9;
+    color:black;   
+}
+#py2restotal1 {
+    background:red;
+    color:white;   
+}
+
+.connector {
+    border: 2px solid #cec410;
+border-left-style: none;
+}
