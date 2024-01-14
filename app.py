@@ -1,12 +1,13 @@
 from flask import Flask, render_template
-import futbol_martes
+import MatchProcessor
 
 app = Flask(__name__)
+matchProcessor = MatchProcessor.MatchProcessor("futbol_martes")
 
 
 @app.route("/")
 def home():
-    return render_template("promiedos.html",players=futbol_martes.get_results("futbol_martes"))
+    return render_template("promiedos.html", players=matchProcessor.get_position_table())
 
 
 if __name__ == "__main__":
