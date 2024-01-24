@@ -7,7 +7,7 @@ matchProcessor = MatchProcessor.MatchProcessor("data/futbol_martes.csv")
 
 @app.route("/")
 def home():
-    return render_template("promiedos.html", players=matchProcessor.get_position_table())
+    return render_template("promiedos.jinja2", players=matchProcessor.get_position_table())
 
 
 if __name__ == "__main__":
