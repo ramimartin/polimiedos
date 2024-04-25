@@ -14,6 +14,7 @@ class MatchProcessor:
             r = csv.reader(csv_f)
             for row in r:
                 match = Match(row[0], row[1].split(';'), row[2].split(';'), row[3], row[4])
+                self.matches.append(match)
                 if match.result == 'H':
                     self.__victory(match.home_team, match.away_team)
                 elif match.result == 'A':

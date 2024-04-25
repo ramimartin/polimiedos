@@ -23,6 +23,7 @@ class Player:
     def __repr__(self):
         return f"{self.name} w:{self._won} t:{self._tied} l:{self._lost} p: {self.points()} mp:{self.total_matches()}"
 
+
 class Match:
     def __init__(self, date, home_team, away_team, result, goal_diff):
         self.date = date
@@ -30,3 +31,9 @@ class Match:
         self.away_team = away_team
         self.result = result
         self.goal_diff = goal_diff
+
+    def to_dict(self):
+        return dict(date=self.date,
+                    home_team=self.home_team,
+                    away_team=self.away_team,
+                    result=self.result)

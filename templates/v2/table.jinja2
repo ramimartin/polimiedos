@@ -1,0 +1,38 @@
+{% extends "v2/base.jinja2" %}
+{% block content %}
+
+<table class="table is-striped is-hoverable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Equipo</th>
+            <th>Pts</th>
+            <th>PJ</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
+            <th>Prom</th>
+        </tr>
+    </thead>
+<tbody>
+{% for player in players %}
+<tr class = "{% if player.points() == players[0].points() %} is-primary
+ {% elif loop.index % 2 == 0  %} pr
+ {% else %} ipr
+
+ {% endif %}">
+    <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index }}</td>
+    <td align="left"><img src="static/ar.png">{{player.name}}</td>
+    <td>{{player.points()}}</td>
+    <td>{{player.total_matches()}}</td>
+    <td>{{player._won}}</td>
+    <td>{{player._tied}}</td>
+    <td>{{player._lost}}</td>
+    <td>{{(player.points()/player.total_matches())|round(2, 'floor')}}</td>
+</tr>
+{% endfor %}
+</tbody>
+
+
+
+ {% endblock %}
