@@ -6,15 +6,17 @@
         <title></title>
     </head>
     <body>
-    <section id= "main" class="section">
+    <div id= "main" class="container is-fluid">
         <div class ="container">
             <h1 class="title">Poli Cramer</h1>
 
             {% include 'v2/menu.jinja2' %}
-            {% block content %} {% endblock %}
+                <div class="container">
+                {% block content %} {% endblock %}
+                </div>
             </div>
         </div>
-    </section>
+    </div>
     </body>
 
 

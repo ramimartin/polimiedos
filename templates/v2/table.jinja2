@@ -22,7 +22,7 @@
 
  {% endif %}">
     <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index }}</td>
-    <td align="left"><img src="static/ar.png">{{player.name}}</td>
+    <td align="left"><!--img src="static/ar.png"-->{{player.name}}</td>
     <td>{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>
     <td>{{player._won}}</td>

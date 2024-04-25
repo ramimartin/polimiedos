@@ -1,0 +1,58 @@
+{% extends "v2/base.jinja2" %}
+{% block content %}
+
+    {% macro team(players) -%}
+        <table class="table is-fullwidth is-striped ">
+            <thead><tr><td>Formación Equipo 1</td></tr></thead>
+            <tbody>
+            {% for player in players %}
+            <tr><td>{{player}}</td></tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {%- endmacro %}
+
+<section class="section">
+
+<div  class="grid is-mobile">
+    {% for match_number in total_matches %}
+    {% if match_number != match_id %}
+    <div class="cell"><a class ="button is-info is-fullwidth" href="/matches/{{match_number + 1}}">Fecha {{match_number+1}}</a></div>
+    {% else %}
+    <div class="cell"><a class="button is-info is-fullwidth"  disabled>Fecha {{match_number+1}}</a></div>
+    {% endif %}
+    {% endfor %}
+    </div>
+</section>
+<section class="section">
+    <nav class="level is-mobile">
+        <div class="level-item has-text-centered">
+            <div>
+            <p class="heading">Equipo 1</p>
+            <p class="title">{% if match.result == 'H' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
+            </div>
+        </div>
+            <div class="level-item has-text-centered">
+            <div>
+            <p class="heading">Equipo 2</p>
+            <p class="title">{% if match.result == 'A' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
+            </div>
+        </div>
+    </nav>
+
+
+</section>
+
+<section>
+    <div class="columns is-mobile">
+      <div class="column">{{ team(match.home_team) }}</div>
+      <div class="column">{{ team(match.away_team) }}</div>
+
+
+    </div>
+</section>
+
+
+ {% endblock %}
