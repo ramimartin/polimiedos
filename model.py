@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Player:
     def __init__(self, name):
         self._won = 0
@@ -26,7 +29,7 @@ class Player:
 
 class Match:
     def __init__(self, date, home_team, away_team, result, goal_diff):
-        self.date = date
+        self.date = datetime.strptime(date, "%d/%m/%Y")
         self.home_team = home_team
         self.away_team = away_team
         self.result = result

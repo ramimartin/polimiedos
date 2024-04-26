@@ -13,7 +13,6 @@
             </tbody>
         </table>
     {%- endmacro %}
-
 <section class="section">
 
 <div  class="grid is-mobile">
@@ -29,30 +28,37 @@
 <section class="section">
     <nav class="level is-mobile">
         <div class="level-item has-text-centered">
-            <div>
-            <p class="heading">Equipo 1</p>
-            <p class="title">{% if match.result == 'H' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
+            <div class="box">
+                <p class="heading">Equipo 1</p>
+                <p class="title">{% if match.result == 'H' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
             </div>
         </div>
-            <div class="level-item has-text-centered">
-            <div>
-            <p class="heading">Equipo 2</p>
-            <p class="title">{% if match.result == 'A' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
+
+        <div class="level-item has-text-centered">
+            <div class="box">
+                <p class="heading">Fecha</p>
+                <p class="subtitle"><span class="has-text-grey-lighter">{{match.date.strftime("%d/%m/%Y")}}</span></p>
+            </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+            <div class="box">
+                <p class="heading">Equipo 2</p>
+                <p class="title">{% if match.result == 'A' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
             </div>
         </div>
     </nav>
 
-
 </section>
 
-<section>
-    <div class="columns is-mobile">
-      <div class="column">{{ team(match.home_team) }}</div>
-      <div class="column">{{ team(match.away_team) }}</div>
 
 
-    </div>
+
+<section class ="section">
+        <div class="columns is-mobile">
+          <div class="column">{{ team(match.home_team) }}</div>
+          <div class="column">{{ team(match.away_team) }}</div>
+        </div>
 </section>
-
 
  {% endblock %}
