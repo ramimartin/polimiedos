@@ -4,18 +4,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
         <title>PoliMiedos</title>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
 
+          // Get all "navbar-burger" elements
+          const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+          // Add a click event on each of them
+          $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+
+            });
+          });
+
+          });
+        </script>
     </head>
     <body>
     <div id= "main" class="container is-fluid">
-        <div class ="container">
-            <h1 class="title">PoliMiedos</h1>
 
-            {% include 'v2/menu.jinja2' %}
+            <h1 class="title">PoliMiedos</h1>
+                {% include 'v2/menu.jinja2' %}
                 <div class="container">
                 {% block content %} {% endblock %}
                 </div>
-            </div>
+
         </div>
     </div>
     </body>
