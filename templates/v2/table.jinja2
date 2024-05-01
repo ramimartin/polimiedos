@@ -1,7 +1,7 @@
 {% extends "v2/base.jinja2" %}
 {% block content %}
 <section class="section">
-<table class="table is-striped is-hoverable">
+<table class="table is-striped is-hoverable is-size-7">
     <thead>
         <tr>
             <th>#</th>
@@ -12,6 +12,7 @@
             <th>PE</th>
             <th>PP</th>
             <th>Prom</th>
+            <th>DG</th>
         </tr>
     </thead>
 <tbody>
@@ -21,14 +22,15 @@
  {% else %} ipr
 
  {% endif %}">
-    <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index }}</td>
+    <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index}}</td>
     <td align="left"><!--img src="static/ar.png"-->{{player.name}}</td>
     <td>{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>
     <td>{{player._won}}</td>
     <td>{{player._tied}}</td>
     <td>{{player._lost}}</td>
-    <td>{{(player.points()/player.total_matches())|round(2, 'floor')}}</td>
+    <td>{{(player.prom())|round(2, 'floor')}}</td>
+    <td align="right">{{player.total_goal_diff}}</td>
 </tr>
 {% endfor %}
 </tbody>
