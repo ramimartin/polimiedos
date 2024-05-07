@@ -28,23 +28,23 @@
 </section>
 <section class="section">
 
-    <nav class="level is-mobile">
+    <nav class="level is-mobile ">
         <div class="level-item has-text-centered">
-            <div class="box">
+            <div class="block">
                 <p class="heading">Equipo 1</p>
                 <p class="title">{% if match.result == 'H' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
             </div>
         </div>
 
         <div class="level-item has-text-centered">
-            <div class="box">
+            <div class="block">
                 <p class="heading">Fecha</p>
-                <p class="subtitle"><span class="has-text-grey-lighter">{{match.date.strftime("%d/%m/%Y")}}</span></p>
+                <p class="subtitle"><span class="has-text-grey-lighter">{{match.date.strftime("%d/%m/%y")}}</span></p>
             </div>
         </div>
 
         <div class="level-item has-text-centered">
-            <div class="box">
+            <div class="block">
                 <p class="heading">Equipo 2</p>
                 <p class="title">{% if match.result == 'A' %}{{match.goal_diff}}{% else %} 0 {% endif %}</p>
             </div>
