@@ -1,4 +1,12 @@
 {% extends "v2/base.jinja2" %}
+
+   {% macro tooltip_text(last_results)-%}
+        {% for result in last_results %}
+            {% if result == 'W'%} 🟢 {% elif result == 'L'%} 🔴 {% else %} 🟡 {% endif %}
+        {% endfor %}
+
+    {%- endmacro %}
+
 {% block content %}
 <section class="section">
 <table class="table is-striped is-hoverable is-size-7-mobile">
@@ -6,6 +14,7 @@
         <tr>
             <th>#</th>
             <th>Equipo</th>
+            <th></th>
             <th>Pts</th>
             <th>PJ</th>
             <th>PG</th>
@@ -23,7 +32,8 @@
 
  {% endif %}">
     <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index}}</td>
-    <td align="left"><!--img src="static/ar.png"-->{{player.name}}</td>
+    <td align="left"><span class="span has-tooltip-right" ><!--img src="static/ar.png"-->{{player.name}} </span></td>
+    <td class="has-background"><span class="is-size-7"> {{tooltip_text(player.last_results())}}</span></td>
     <td>{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>
     <td>{{player._won}}</td>

@@ -3,13 +3,15 @@ from model import Player, Match
 from unidecode import unidecode
 
 
+
 class MatchProcessor:
     def __init__(self, file):
         self.players = {}
         self.matches = []
-        self.__processCSV(file)
+        self.__process_csv(file)
 
-    def __processCSV(self, file):
+
+    def __process_csv(self, file):
         with open(file) as csv_f:
             r = csv.reader(csv_f)
             for row in r:

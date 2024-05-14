@@ -8,17 +8,21 @@ class Player:
         self._lost = 0
         self.name = name
         self.total_goal_diff  = 0
+        self.results = []
 
     def win(self, goal_diff):
         self._won = self._won + 1
         self.total_goal_diff += goal_diff
+        self.results.append('W')
 
     def tie(self):
         self._tied = self._tied + 1
+        self.results.append('T')
 
     def lose(self, goal_diff):
         self._lost = self._lost + 1
         self.total_goal_diff -= goal_diff
+        self.results.append('L')
 
     def total_matches(self):
         return self._won + self._tied + self._lost
@@ -28,6 +32,9 @@ class Player:
 
     def prom(self):
         return self.points()/self.total_matches()
+    
+    def last_results(self):
+        return self.results[-5:]
 
     def __repr__(self):
         return f"{self.name} w:{self._won} t:{self._tied} l:{self._lost} p: {self.points()} mp:{self.total_matches()}"
