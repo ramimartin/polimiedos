@@ -1,51 +1,45 @@
 {% extends "v2/base.jinja2" %}
-
-   {% macro tooltip_text(last_results)-%}
-        {% for result in last_results %}
-            {% if result == 'W'%} 🟢 {% elif result == 'L'%} 🔴 {% else %} 🟡 {% endif %}
-        {% endfor %}
-
-    {%- endmacro %}
-
+   {% macro tooltip_text(last_results)%}
+   <span class="span">{% for result in last_results %}
+            {% if result == 'W' %}🟢{%- elif result == 'L' %}🔴{% else %}🟡{% endif %}
+        {% endfor %}⚫️⚫️</span>
+    {% endmacro %} 
 {% block content %}
 <section class="section">
-<table class="table is-striped is-hoverable is-size-7-mobile">
+<div class="table-container">
+<table class="table is-striped is-hoverable is-narrow is-size-7-mobile">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Equipo</th>
-            <th></th>
-            <th>Pts</th>
-            <th>PJ</th>
-            <th>PG</th>
-            <th>PE</th>
-            <th>PP</th>
-            <th>Prom</th>
-            <th>DG</th>
+          <th><abbr class="span is-inline" title="Posición" >#</abbr></th>
+            <th>Jugador</th>
+            <th><abbr class="span is-inline" title="Últimos Partidos" >UP</abbr></th>
+            <th><abbr class="span" title="Puntos">Pts</th>
+            <th><abbr class="span" title="Partidos Jugados">PJ</th>
+            <th><abbr class="span" title="Partidos Ganados">PG</th>
+            <th><abbr class="span" title="Partidos Empataos">PE</th>
+            <th><abbr class="span" title="Partidos Perdidos">PP</th>
+            <th><abbr class="span" title="Promedio">Prom</th>
+            <th><abbr class="span" title="Diferencia de Gol">DG</th>
         </tr>
     </thead>
 <tbody>
 {% for player in players %}
-<tr class = "{% if player.points() == players[0].points() %} is-primary
- {% elif loop.index % 2 == 0  %} pr
- {% else %} ipr
-
- {% endif %}">
+<tr class = "{% if player.points() == players[0].points() %} is-primary{% endif %}">
     <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index}}</td>
-    <td align="left"><span class="span has-tooltip-right" ><!--img src="static/ar.png"-->{{player.name}} </span></td>
-    <td class="has-background"><span class="is-size-7"> {{tooltip_text(player.last_results())}}</span></td>
-    <td>{{player.points()}}</td>
+    <td><span class="span">{{player.name}}</span></td>
+    <td class="has-text-right is-vcentered" style="font-size:.3rem!important">{{tooltip_text(player.last_results())}}</td>
+    <td class="has-text-weight-bold">{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>
     <td>{{player._won}}</td>
     <td>{{player._tied}}</td>
     <td>{{player._lost}}</td>
     <td>{{(player.prom())|round(2, 'floor')}}</td>
-    <td align="right">{{player.total_goal_diff}}</td>
+    <td class="has-text-right">{{player.total_goal_diff}}</td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
-
+</div>
 </section>
 
  {% endblock %}
