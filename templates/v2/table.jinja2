@@ -1,13 +1,13 @@
 {% extends "v2/base.jinja2" %}
    {% macro tooltip_text(last_results)%}
-   <span class="span">
-        {% for n in range(5-(last_results|count)) %}
-            ⚫️
-        {% endfor%}
-   
+   <span class="span">   
         {% for result in last_results %}
             {% if result == 'W' %}🟢{%- elif result == 'L' %}🔴{% else %}🟡{% endif %}
-        {% endfor %}⚫️⚫️</span>
+        {% endfor %}
+        
+        {% for n in range(7-(last_results|count)) %}
+            ⚫️
+        {% endfor%}</span>
     {% endmacro %} 
 {% block content %}
 <section class="section">
