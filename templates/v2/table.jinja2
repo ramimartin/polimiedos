@@ -1,6 +1,11 @@
 {% extends "v2/base.jinja2" %}
    {% macro tooltip_text(last_results)%}
-   <span class="span">{% for result in last_results %}
+   <span class="span">
+        {% for n in range(5-(last_results|count)) %}
+            ⚫️
+        {% endfor%}
+   
+        {% for result in last_results %}
             {% if result == 'W' %}🟢{%- elif result == 'L' %}🔴{% else %}🟡{% endif %}
         {% endfor %}⚫️⚫️</span>
     {% endmacro %} 
@@ -27,7 +32,7 @@
 <tr class = "{% if player.points() == players[0].points() %} is-primary{% endif %}">
     <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index}}</td>
     <td><span class="span">{{player.name}}</span></td>
-    <td class="has-text-right is-vcentered" style="font-size:.3rem!important">{{tooltip_text(player.last_results())}}</td>
+    <td class="has-text-right is-vcentered" style="font-size:.26rem!important">{{tooltip_text(player.last_results())}}</td>
     <td class="has-text-weight-bold">{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>
     <td>{{player._won}}</td>
