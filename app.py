@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler, FileSystemEvent
 import threading
 import time
 
-PATH = "data/futbol_martes.csv"
+PATH = "data/futbol_martes_2.csv"
 
 
 class FixtureChangeHandler(FileSystemEventHandler):
@@ -45,4 +45,6 @@ def matches(match_day):
 
 if __name__ == "__main__":
     run_watcher(PATH)
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
     app.run(debug=True)
