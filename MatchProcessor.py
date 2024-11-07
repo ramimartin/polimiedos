@@ -47,4 +47,4 @@ class MatchProcessor:
             player.tie()
 
     def get_position_table(self):
-        return sorted(list(self.players.values()), key=lambda x: (-x.points(), -x.prom(), unidecode(x.name)))
+        return sorted(list(self.players.values()), key=lambda x: (-x.points(), -x.prom(), -x.total_goal_diff ,unidecode(x.name)))
