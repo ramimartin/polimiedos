@@ -5,13 +5,22 @@ from unidecode import unidecode
 
 
 class MatchProcessor:
-    def __init__(self, file):
+    def __init__(self, file, injuries_file, current_injuries_file=None):
         self.players = {}
         self.matches = []
-        self.__process_csv(file)
+        self.current_injuries = {} # Initialize as a dictionary
+        self.__process_csv(file, injuries_file)
 
 
-    def __process_csv(self, file):
+    def __process_csv(self, file, current_injuries_file):
+
+        with open(current_injuries_file) as csv_f:
+            r = csv.reader(csv_f)
+            for row in r:
+                if row and len(row) > 1: # Ensure the row is not empty and has at least two columns
+                    player_name = row[0].strip()
+                    injury_description = row[1].strip()
+                    self.current_injuries[player_name] = injury_description # Populate dictionary
         with open(file) as csv_f:
             r = csv.reader(csv_f)
             for row in r:
@@ -24,17 +33,18 @@ class MatchProcessor:
                 elif match.result == 'T':
                     self.__tie(match.home_team, match.away_team)
 
+
     def __victory(self, a_team, another_team, goal_diff):
         for p in a_team:
             player = self.players.get(p)
             if player is None:
-                player = Player(p)
+                player = Player(p, self.current_injuries.get(p))
                 self.players.update({p: player})
             player.win(goal_diff)
         for p in another_team:
             player = self.players.get(p)
             if player is None:
-                player = Player(p)
+                player = Player(p, self.current_injuries.get(p))
                 self.players.update({p: player})
             player.lose(goal_diff)
 
@@ -42,9 +52,13 @@ class MatchProcessor:
         for p in (a_team + another_team):
             player = self.players.get(p)
             if player is None:
-                player = Player(p)
+                player = Player(p, self.current_injuries.get(p))
                 self.players.update({p: player})
             player.tie()
 
     def get_position_table(self):
+        # Apply injuries to players
         return sorted(list(self.players.values()), key=lambda x: (-x.points(), -x.prom(), -x.total_goal_diff ,unidecode(x.name)))
+
+    def get_current_injuries(self):
+        return self.current_injuries

@@ -7,6 +7,7 @@ import threading
 import time
 
 PATH = "data/futbol_martes_5.csv"
+INJURIES_PATH = "data/current_injuries.csv"
 
 
 class FixtureChangeHandler(FileSystemEventHandler):
@@ -20,7 +21,7 @@ class FixtureChangeHandler(FileSystemEventHandler):
 
 
 app = Flask(__name__)
-handler = FixtureChangeHandler(MatchProcessor.MatchProcessor(PATH))
+handler = FixtureChangeHandler(MatchProcessor.MatchProcessor(PATH,INJURIES_PATH))
 
 
 def run_watcher(path):

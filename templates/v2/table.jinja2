@@ -31,7 +31,7 @@
 {% for player in players %}
 <tr class = "{% if player.points() == players[0].points() %} is-primary{% endif %}">
     <td {% if player.points() == players[loop.length-1].points() %} class="is-danger" {% endif %}>{{loop.index}}</td>
-    <td><span class="span">{{player.name}}</span></td>
+    <td><span class="span">{{player.name}}{%if player.injured() %} 🚑{% endif %}</span></td>
     <td class="has-text-right is-vcentered" style="font-size:.26rem!important">{{tooltip_text(player.last_results())}}</td>
     <td class="has-text-weight-bold">{{player.points()}}</td>
     <td>{{player.total_matches()}}</td>

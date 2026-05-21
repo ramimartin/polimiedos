@@ -2,13 +2,14 @@ from datetime import datetime
 
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, injury):
         self._won = 0
         self._tied = 0
         self._lost = 0
         self.name = name
         self.total_goal_diff  = 0
         self.results = []
+        self._injury = injury
 
     def win(self, goal_diff):
         self._won = self._won + 1
@@ -35,6 +36,12 @@ class Player:
     
     def last_results(self):
         return self.results[-5:]
+
+    def injury(self, cause):
+        self._injury = cause
+
+    def injured (self):
+        return self._injury is not None
 
     def __repr__(self):
         return f"{self.name} w:{self._won} t:{self._tied} l:{self._lost} p: {self.points()} mp:{self.total_matches()}"
