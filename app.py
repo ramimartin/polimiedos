@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler, FileSystemEvent
 import threading
 import time
 
-PATH = "data/futbol_martes_5.csv"
+PATH = "data/futbol_martes_6.csv"
 INJURIES_PATH = "data/current_injuries.csv"
 
 
